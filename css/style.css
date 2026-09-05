@@ -149,6 +149,13 @@ h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin-bottom: 1.5rem; }
 }
 .pricing-table th, .pricing-table td { padding: .9rem 1rem; border-bottom: 1px solid #edf2ef; text-align: left; }
 .pricing-table th { background: #e8f4ee; color: var(--color-primary); }
+.pricing-table tr:last-child td { border-bottom: 0; }
+.pricing-table td:last-child { text-align: right; white-space: nowrap; font-weight: 700; color: var(--color-primary); }
+
+.pricing-group { margin-top: 2rem; }
+.pricing-group:first-of-type { margin-top: 1.5rem; }
+.pricing-group-title { margin: 0 0 .5rem; color: var(--color-primary); font-size: 1.25rem; }
+.pricing-group-note { margin: 0 0 .8rem; color: var(--color-muted); font-size: .9rem; font-style: italic; }
 
 .contact-form {
   background: #fff;
