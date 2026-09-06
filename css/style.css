@@ -150,12 +150,62 @@ h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin-bottom: 1.5rem; }
 .pricing-table th, .pricing-table td { padding: .9rem 1rem; border-bottom: 1px solid #edf2ef; text-align: left; }
 .pricing-table th { background: #e8f4ee; color: var(--color-primary); }
 .pricing-table tr:last-child td { border-bottom: 0; }
-.pricing-table td:last-child { text-align: right; white-space: nowrap; font-weight: 700; color: var(--color-primary); }
+.pricing-table td:last-child { text-align: right; font-weight: 700; color: var(--color-primary); }
+.pricing-table td:first-child { width: 100%; }
 
-.pricing-group { margin-top: 2rem; }
-.pricing-group:first-of-type { margin-top: 1.5rem; }
-.pricing-group-title { margin: 0 0 .5rem; color: var(--color-primary); font-size: 1.25rem; }
+.pricing-highlight {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: #e8f4ee;
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  margin-top: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+.pricing-highlight-price { white-space: nowrap; }
+
+.pricing-group {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-top: .8rem;
+  overflow: hidden;
+}
+.pricing-summary {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding: 1rem 1.2rem;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+.pricing-summary::-webkit-details-marker { display: none; }
+.pricing-summary:hover, .pricing-summary:focus-visible { background: var(--color-soft); }
+.pricing-summary::after {
+  content: '';
+  flex-shrink: 0;
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid var(--color-primary);
+  border-bottom: 2px solid var(--color-primary);
+  transform: rotate(45deg);
+  transition: transform .2s ease;
+}
+.pricing-group[open] .pricing-summary::after { transform: rotate(-135deg); }
+.pricing-group-title { flex: 1; font-weight: 700; font-size: 1.05rem; color: var(--color-primary); }
+.pricing-group-count { font-size: .85rem; color: var(--color-muted); white-space: nowrap; }
+.pricing-group-body { padding: 0 1.2rem 1.2rem; }
 .pricing-group-note { margin: 0 0 .8rem; color: var(--color-muted); font-size: .9rem; font-style: italic; }
+.pricing-group .pricing-table { box-shadow: none; border-radius: 0; }
+.pricing-group .pricing-table tr:first-child td { border-top: 1px solid #edf2ef; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pricing-summary::after { transition: none; }
+}
 
 .contact-form {
   background: #fff;
