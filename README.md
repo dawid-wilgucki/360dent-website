@@ -13,7 +13,11 @@ Jednostronicowa (one-page) strona internetowa przygotowana w czystym HTML, CSS i
 │   └── main.js
 ├── assets/
 │   └── images/
-│       └── logo-placeholder.svg
+│       ├── logo.png              # plik źródłowy logo (1254x1254, nieużywany na stronie)
+│       ├── logo-360dent.png      # logo przycięte, 256x256 – navbar, stopka, og:image
+│       ├── favicon.ico           # 16/32/48 px
+│       ├── apple-touch-icon.png  # 180x180
+│       └── ...                   # zdjęcia gabinetu i lekarza
 └── README.md
 ```
 
@@ -73,6 +77,8 @@ Jeśli domena została kupiona u innego operatora (np. OVH, home.pl, GoDaddy), m
 
 ## Uwagi
 
-- `assets/images/logo-placeholder.svg` to placeholder logo – podmień na docelowy plik SVG/PNG.
+- Logo: `logo.png` to plik źródłowy (pełny kadr z marginesem). Wersja używana na stronie to
+  `logo-360dent.png` – przycięta do samego emblematu i przeskalowana do 256x256. Po podmianie
+  źródła wygeneruj ponownie `logo-360dent.png`, `favicon.ico` i `apple-touch-icon.png`.
 - Formularz kontaktowy zawiera walidację po stronie klienta (demo) i nie wysyła danych na serwer.
 - Przed produkcją uzupełnij treści oznaczone komentarzem `<!-- TODO: uzupełnić treść -->`.
