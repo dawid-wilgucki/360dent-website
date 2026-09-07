@@ -53,8 +53,24 @@ h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin-bottom: 1.5rem; }
 .logo { display: inline-flex; align-items: center; gap: .6rem; font-weight: 800; color: var(--color-primary); }
 .logo img { border-radius: 8px; }
 .logo-text { display: flex; flex-direction: column; line-height: 1.15; }
-.logo-name  { font-weight: 800; }
-.logo-tagline { font-size: .58rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--color-accent); }
+.logo-name  { font-weight: 800; font-size: 1.05rem; }
+.logo-tagline {
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+/* w navbarze tagline nie miesci sie obok CTA ponizej ~520px - wchodzi pod przycisk */
+@media (max-width: 519px) {
+  .navbar .logo-tagline { display: none; }
+}
+@media (min-width: 520px) {
+  .logo-name { font-size: 1.2rem; }
+}
+.footer .logo-name { font-size: 1.05rem; }
+.footer .logo-tagline { font-size: .64rem; }
 
 .nav-toggle {
   display: inline-flex;
