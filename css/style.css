@@ -113,7 +113,7 @@ h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin-bottom: 1.5rem; }
 
 .hero-grid, .about-grid, .contact-grid { display: grid; gap: 1.5rem; }
 .eyebrow { color: var(--color-accent); font-weight: 700; }
-.hero-card, .about-image {
+.about-image {
   background: #fff;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -122,7 +122,41 @@ h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin-bottom: 1.5rem; }
   display: grid;
   place-items: center;
 }
-.hero-card img, .about-image img { border-radius: var(--radius); }
+.about-image img { border-radius: var(--radius); }
+
+/* karta z godzinami i kontaktem w hero */
+.hero-card {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.6rem;
+}
+.hero-card-title {
+  margin: 0 0 .8rem;
+  font-size: 1rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.hero-card-hours { display: flex; flex-direction: column; margin: 0; }
+.hero-card-days { font-weight: 700; color: var(--color-text); }
+.hero-card-time { font-size: 1.9rem; font-weight: 800; line-height: 1.2; color: var(--color-primary); }
+.hero-card-closed { margin: .4rem 0 0; font-size: .9rem; color: var(--color-muted); }
+
+.hero-card-info {
+  margin: 1.2rem 0 0;
+  padding-top: 1.2rem;
+  border-top: 1px solid #e9efec;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: .5rem 1rem;
+  align-items: baseline;
+}
+.hero-card-info dt { font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; color: var(--color-muted); }
+.hero-card-info dd { margin: 0; font-weight: 600; }
+.hero-card-info a { color: var(--color-primary); }
+
+.hero-card-cta { display: block; margin-top: 1.3rem; text-align: center; }
 
 .card-grid {
   display: grid;
