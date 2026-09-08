@@ -351,53 +351,63 @@
           </p>
           <div class="gallery-grid">
             <figure class="gallery-item fade-in">
-              <img
+              <button class="gallery-trigger" type="button" aria-label="Powiększ zdjęcie: Mikroskop zabiegowy Carl Zeiss nad fotelem stomatologicznym">
+                <img
                 src="assets/images/mikroskop-zeiss-stanowisko-zabiegowe.jpg"
                 alt="Mikroskop zabiegowy Carl Zeiss nad fotelem stomatologicznym"
                 width="1536"
                 height="2048"
                 loading="lazy"
               />
+              </button>
               <figcaption>Leczenie kanałowe pod mikroskopem Carl Zeiss</figcaption>
             </figure>
             <figure class="gallery-item fade-in">
-              <img
+              <button class="gallery-trigger" type="button" aria-label="Powiększ zdjęcie: Stanowisko zabiegowe z mikroskopem i unitem stomatologicznym">
+                <img
                 src="assets/images/gabinet-stomatologiczny-mikroskop.jpg"
                 alt="Stanowisko zabiegowe z mikroskopem i unitem stomatologicznym"
                 width="1536"
                 height="2048"
                 loading="lazy"
               />
+              </button>
               <figcaption>Stanowisko zabiegowe z mikroskopem</figcaption>
             </figure>
             <figure class="gallery-item fade-in">
-              <img
+              <button class="gallery-trigger" type="button" aria-label="Powiększ zdjęcie: Drugie stanowisko zabiegowe z fotelem i unitem">
+                <img
                 src="assets/images/gabinet-stomatologiczny-stanowisko-2.jpg"
                 alt="Drugie stanowisko zabiegowe z fotelem i unitem"
                 width="1536"
                 height="2048"
                 loading="lazy"
               />
+              </button>
               <figcaption>Drugie stanowisko zabiegowe</figcaption>
             </figure>
             <figure class="gallery-item fade-in">
-              <img
+              <button class="gallery-trigger" type="button" aria-label="Powiększ zdjęcie: Stanowisko zabiegowe, w tle autoklaw i destylator wody">
+                <img
                 src="assets/images/sterylizacja-autoklaw.jpg"
                 alt="Stanowisko zabiegowe, w tle autoklaw i destylator wody"
                 width="1536"
                 height="2048"
                 loading="lazy"
               />
+              </button>
               <figcaption>Stanowisko zabiegowe i zaplecze sterylizacyjne</figcaption>
             </figure>
             <figure class="gallery-item fade-in">
-              <img
+              <button class="gallery-trigger" type="button" aria-label="Powiększ zdjęcie: Recepcja gabinetu 360dent z biurkiem i terminalem płatniczym">
+                <img
                 src="assets/images/recepcja-gabinetu.jpg"
                 alt="Recepcja gabinetu 360dent z biurkiem i terminalem płatniczym"
                 width="1536"
                 height="2048"
                 loading="lazy"
               />
+              </button>
               <figcaption>Recepcja</figcaption>
             </figure>
           </div>
@@ -524,6 +534,16 @@
     </footer>
 
     <button class="scroll-top" id="scroll-top" aria-label="Przewiń do góry">↑</button>
+
+    <dialog class="lightbox" id="lightbox" aria-label="Podgląd zdjęcia">
+      <button class="lightbox-btn lightbox-close" type="button" aria-label="Zamknij podgląd">&times;</button>
+      <button class="lightbox-btn lightbox-prev" type="button" aria-label="Poprzednie zdjęcie">&lsaquo;</button>
+      <button class="lightbox-btn lightbox-next" type="button" aria-label="Następne zdjęcie">&rsaquo;</button>
+      <figure class="lightbox-figure">
+        <img class="lightbox-img" src="" alt="" />
+        <figcaption class="lightbox-caption"></figcaption>
+      </figure>
+    </dialog>
 
     <script src="js/main.js"></script>
   </body>

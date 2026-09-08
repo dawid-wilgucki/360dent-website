@@ -98,3 +98,72 @@ form?.addEventListener('submit', (e) => {
   statusEl.style.color = '#1d6a4a';
   form.reset();
 });
+
+/* --- podglad zdjec galerii (lightbox) --- */
+const lightbox = document.getElementById('lightbox');
+
+if (lightbox) {
+  const triggers = [...document.querySelectorAll('.gallery-trigger')];
+  const lbImg = lightbox.querySelector('.lightbox-img');
+  const lbCaption = lightbox.querySelector('.lightbox-caption');
+  const btnPrev = lightbox.querySelector('.lightbox-prev');
+  const btnNext = lightbox.querySelector('.lightbox-next');
+  const btnClose = lightbox.querySelector('.lightbox-close');
+
+  const slides = triggers.map((trigger) => {
+    const img = trigger.querySelector('img');
+    return {
+      src: img.getAttribute('src'),
+      alt: img.getAttribute('alt'),
+      caption: trigger.parentElement.querySelector('figcaption')?.textContent.trim() ?? '',
+    };
+  });
+
+  let current = 0;
+  let lastFocused = null;
+
+  const show = (index) => {
+    current = (index + slides.length) % slides.length;
+    const slide = slides[current];
+    lbImg.src = slide.src;
+    lbImg.alt = slide.alt;
+    lbCaption.textContent = slide.caption;
+  };
+
+  const openAt = (index) => {
+    lastFocused = document.activeElement;
+    show(index);
+    lightbox.showModal();
+    document.body.style.overflow = 'hidden';
+    btnClose.focus();
+  };
+
+  triggers.forEach((trigger, index) => {
+    trigger.addEventListener('click', () => openAt(index));
+  });
+
+  btnPrev.addEventListener('click', () => show(current - 1));
+  btnNext.addEventListener('click', () => show(current + 1));
+  btnClose.addEventListener('click', () => lightbox.close());
+
+  // klikniecie poza zdjeciem zamyka podglad
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) lightbox.close();
+  });
+
+  lightbox.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); show(current - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); show(current + 1); }
+  });
+
+  // Esc obsluguje samo <dialog>, wiec sprzatamy w jednym miejscu
+  lightbox.addEventListener('close', () => {
+    document.body.style.overflow = '';
+    lastFocused?.focus();
+  });
+
+  if (slides.length < 2) {
+    btnPrev.hidden = true;
+    btnNext.hidden = true;
+  }
+}

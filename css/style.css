@@ -163,6 +163,87 @@ h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin-bottom: 1.5rem; }
   font-size: .9rem;
   color: var(--color-muted);
 }
+.gallery-trigger {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  width: 100%;
+}
+.gallery-trigger:focus-visible { outline: 3px solid var(--color-accent); outline-offset: -3px; }
+.gallery-trigger img { transition: transform .3s ease; }
+.gallery-item:hover .gallery-trigger img { transform: scale(1.04); }
+
+/* --- podglad zdjec (lightbox) --- */
+.lightbox {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+}
+.lightbox:not([open]) { display: none; }
+.lightbox[open] { display: grid; place-items: center; }
+/* tlo tylko lekko przyciemnione i rozmyte - strona po bokach zostaje widoczna */
+.lightbox::backdrop {
+  background: rgba(15, 63, 43, .3);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.lightbox-figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: .75rem; }
+.lightbox-img {
+  display: block;
+  max-width: 92vw;
+  max-height: 82vh;
+  object-fit: contain;
+  border-radius: var(--radius);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .45);
+}
+/* podklad, bo tlo za podpisem to rozmyta strona - bywa jasne */
+.lightbox-caption {
+  color: #fff;
+  font-size: .95rem;
+  font-weight: 600;
+  text-align: center;
+  max-width: 92vw;
+  background: rgba(15, 63, 43, .82);
+  padding: .45rem 1rem;
+  border-radius: 999px;
+}
+.lightbox-btn {
+  position: fixed;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .92);
+  color: var(--color-primary);
+  font-size: 1.9rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .3);
+}
+.lightbox-btn:hover { background: #fff; }
+.lightbox-btn:focus-visible { outline: 3px solid var(--color-accent); outline-offset: 3px; }
+.lightbox-close { top: 1rem; right: 1rem; }
+.lightbox-prev { left: 1rem; top: 50%; transform: translateY(-50%); }
+.lightbox-next { right: 1rem; top: 50%; transform: translateY(-50%); }
+
+@media (max-width: 560px) {
+  .lightbox-btn { width: 42px; height: 42px; font-size: 1.6rem; }
+  .lightbox-prev { left: .5rem; }
+  .lightbox-next { right: .5rem; }
+  .lightbox-img { max-height: 74vh; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gallery-trigger img, .gallery-item:hover .gallery-trigger img { transition: none; transform: none; }
+}
 
 .pricing-table-wrapper { overflow-x: auto; }
 .pricing-table {
