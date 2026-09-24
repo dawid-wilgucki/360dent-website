@@ -348,7 +348,10 @@ h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin-bottom: 1.5rem; }
   .pricing-summary::after { transition: none; }
 }
 
+/* mobile: kolejnosc z HTML - naglowek, zdjecie, biogram; odstepy trzyma gap siatki */
 .doctor-grid { display: grid; gap: 1.8rem; }
+.doctor-header > :last-child { margin-bottom: 0; }
+.doctor-body > :first-child { margin-top: 0; }
 .doctor-photo { margin: 0; }
 .doctor-photo img {
   display: block;
@@ -437,7 +440,20 @@ h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin-bottom: 1.5rem; }
 
 @media (min-width: 860px) {
   .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1.1fr 1fr; align-items: center; }
-  .doctor-grid { grid-template-columns: .8fr 1.2fr; align-items: start; gap: 2.5rem; }
+  /* desktop: zdjecie wraca do lewej kolumny i obejmuje oba wiersze; wiersz 1fr
+     przejmuje nadmiar wysokosci zdjecia, wiec biogram startuje tuz pod naglowkiem */
+  .doctor-grid {
+    grid-template-columns: .8fr 1.2fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "photo header"
+      "photo body";
+    align-items: start;
+    gap: 1.2rem 2.5rem;
+  }
+  .doctor-header { grid-area: header; }
+  .doctor-photo { grid-area: photo; }
+  .doctor-body { grid-area: body; }
   .card-grid { grid-template-columns: repeat(3, 1fr); }
   .gallery-grid { grid-template-columns: repeat(3, 1fr); }
   .footer-grid { grid-template-columns: repeat(3, auto); align-items: center; justify-content: space-between; }
