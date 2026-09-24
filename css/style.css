@@ -7,10 +7,17 @@
   --color-soft: #f4faf7;
   --shadow: 0 10px 30px rgba(29, 106, 74, 0.12);
   --radius: 16px;
+  --header-h: 73px;      /* .navbar min-height 72px + 1px ramki .header */
+  --section-pad: 4rem;   /* pionowy padding .section; na mobile mniejszy */
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+/* przyklejony navbar zaslanialby naglowek sekcji po kliknieciu w kotwice -
+   przewijamy tak, zeby naglowek zawsze ladowal ~1rem pod navbarem */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) - var(--section-pad) + 1rem);
+}
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
@@ -23,8 +30,20 @@ img { max-width: 100%; display: block; }
 a { color: var(--color-primary); text-decoration: none; }
 
 .container { width: min(1120px, 92%); margin-inline: auto; }
-.section { padding: 4rem 0; }
+.section { padding: var(--section-pad) 0; }
 .bg-soft { background: var(--color-soft); }
+
+/* mobile: ciasniejszy rytm - ok. 1rem miedzy trescia kolejnych sekcji */
+@media (max-width: 859px) {
+  :root { --section-pad: .5rem; }
+  /* sekcje z tlem: 1rem od sasiadow (.5 margin + .5 padding sasiada), 1.5rem oddechu w srodku */
+  .section.bg-soft { padding: 1.5rem 0; margin: .5rem 0; }
+  main > .section:last-child { margin-bottom: 0; padding-bottom: 2rem; }
+  .hero.section { padding-top: 1.5rem; }
+  /* marginesy na krawedziach sekcji doliczalyby sie do odstepu */
+  .doctor-header > :first-child { margin-top: 0; }
+  .doctor-body > :last-child { margin-bottom: 0; }
+}
 h1, h2, h3 { line-height: 1.2; margin-top: 0; }
 h1 { font-size: clamp(2rem, 5vw, 3.2rem); }
 h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin-bottom: 1.5rem; }
